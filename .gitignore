@@ -2,3 +2,5 @@
 *.out
 *.elf
 *.map
+*.hex
+*.bin
