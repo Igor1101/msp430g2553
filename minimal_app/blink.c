@@ -18,7 +18,8 @@
 
 #include <msp430.h>				
 
-void main(void) {
+void main(void) 
+{
 	WDTCTL = WDTPW | WDTHOLD;		// Stop watchdog timer
 	P1DIR |= 0x04;					// Set P1.2 to output direction
 
