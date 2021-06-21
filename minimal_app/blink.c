@@ -21,12 +21,12 @@
 void main(void) 
 {
 	WDTCTL = WDTPW | WDTHOLD;		// Stop watchdog timer
-	P1DIR |= 0x04;					// Set P1.2 to output direction
+	P1DIR |= 0x01;					// Set P1.2 to output direction
 
 	for(;;) {
 		volatile unsigned int i;	// volatile to prevent optimization
 
-		P1OUT ^= 0x04;				// Toggle P1.2 using exclusive-OR
+		P1OUT ^= 0x01;				// Toggle P1.2 using exclusive-OR
 
 		i = 10000;					// SW Delay
 		do i--;
