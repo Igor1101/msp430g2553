@@ -24,11 +24,11 @@ TARG_GCC = msp430-elf
 
 # Add or subtract whatever MSPGCC flags you want. There are plenty more
 #######################################################################################
-CFLAGS   = -mmcu=$(MCU) -g -Os -Wall -Wunused -Wno-main $(INCLUDES) -g -ggdb
-ASFLAGS  = -mmcu=$(MCU) -x assembler-with-cpp -Wa,-gstabs
+CFLAGS   += -mmcu=$(MCU) -g3 -Os -Wall -Wunused -Wno-main $(INCLUDES) -g -ggdb
+ASFLAGS  += -mmcu=$(MCU) -x assembler-with-cpp -Wa,-gstabs
 #LDFLAGS  = -mmcu=$(MCU) -Wl,-Map=$(TARGET).map -nostdlib -nostartfiles -L $(GCC_DIR_INC)
 
-LDFLAGS = -mmcu=$(MCU) -L $(GCC_DIR_INC) -Wl,-Map,$(TARGET).map,--gc-sections 
+LDFLAGS += -mmcu=$(MCU) -L $(GCC_DIR_INC) -Wl,-Map,$(TARGET).map,--gc-sections 
 ########################################################################################
 CC      = $(GCC_DIR_BIN)/$(TARG_GCC)-gcc
 GDB     = $(GCC_DIR_BIN)/$(TARG_GCC)-gdb
@@ -78,7 +78,7 @@ $(TARGET).hex: $(TARGET).elf
 	@echo "Compiling $<"
 	$(CC) -c $(CFLAGS) -o $@ $<
 dump: $(TARGET).elf
-	$(OBJDUMP) -S $< > $(TARGET).dump
+	$(OBJDUMP) -D -S $< > $(TARGET).dump
 burn: $(TARGET).elf
 	$(MSPDEBUG) rf2500 "prog $(TARGET).elf"
 clean:

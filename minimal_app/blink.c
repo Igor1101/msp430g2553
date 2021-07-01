@@ -18,6 +18,12 @@
 
 #include <msp430.h>				
 
+static void __attribute__((naked, section(".crt_0042"), used))
+disable_watchdog (void)
+{
+  WDTCTL = WDTPW | WDTHOLD;
+}
+
 void main(void) 
 {
 	WDTCTL = WDTPW | WDTHOLD;		// Stop watchdog timer
