@@ -11,10 +11,10 @@
 # eg if you have a source 'foo.S' then set target to 'foo'
 # 
 #default msp430 toolchain path (it asks to be installed somewhere there)
+# add APPSRC srcs
 DEF_GCC_DIR ?= /root/ti/msp430-gcc
 TARGET   ?= PROG
 MCU      = MSP430G2553
-APPSRC += blink.c
 
 GCC_DIR = $(DEF_GCC_DIR)
 GCC_DIR_BIN = $(DEF_GCC_DIR)/bin
