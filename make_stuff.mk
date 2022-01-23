@@ -12,7 +12,7 @@
 # 
 #default msp430 toolchain path (it asks to be installed somewhere there)
 # add APPSRC srcs
-DEF_GCC_DIR ?= /root/ti/msp430-gcc
+DEF_GCC_DIR ?= ~/ti/msp430-gcc
 TARGET   ?= PROG
 MCU      = MSP430G2553
 
